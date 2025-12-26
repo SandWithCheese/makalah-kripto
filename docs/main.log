@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.21)  26 DEC 2025 13:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.21)  26 DEC 2025 13:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -319,28 +319,8 @@ e
 \c@lstlisting=\count295
 
 (./sections/01_introduction.tex
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-[]\OT1/ptm/m/n/10 Internet of Things (IoT) telah berkem-bang pe-sat,
- []
-
-
-Underfull \hbox (badness 2173) in paragraph at lines 4--5
-\OT1/ptm/m/n/10 menghubungkan mil-iaran perangkat ke in-ter-net. Na-mun,
- []
-
-
-Underfull \hbox (badness 3590) in paragraph at lines 4--5
-\OT1/ptm/m/n/10 perangkat-perangkat ini ser-ingkali memi-liki keter-batasan
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 4--5
-\OT1/ptm/m/n/10 sum-ber daya kom-putasi, mem-ori, dan daya bat-erai.
- []
-
-
-Underfull \hbox (badness 4967) in paragraph at lines 4--5
-\OT1/ptm/m/n/10 Krip-tografi stan-dar seperti AES (Ad-vanced En-cryp-tion
+Underfull \hbox (badness 1975) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 menghubungkan mil-iaran perangkat mu-lai dari per-ala-tan
  []
 
 ) (./sections/02_background.tex
@@ -353,17 +333,17 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texm
+f-dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
 Underfull \hbox (badness 3179) in paragraph at lines 12--13
 []\OT1/ptm/b/n/10 Nir-sangkal (\OT1/ptm/b/it/10 Non-repudiation\OT1/ptm/b/n/10 
 )\OT1/ptm/m/n/10 : Mence-gah pen-girim
  []
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/base/8r.enc}
 
-
-]
 Underfull \hbox (badness 3088) in paragraph at lines 41--42
 []\OT1/ptm/m/n/10 AES (\OT1/ptm/m/it/10 Ad-vanced En-cryp-tion Stan-dard\OT1/pt
 m/m/n/10 ) adalah stan-dar
@@ -380,7 +360,7 @@ Underfull \hbox (badness 2302) in paragraph at lines 60--61
 \OT1/ptm/m/n/10 tinggi dan kode pro-gram yang be-sar un-tuk tabel pre-
  []
 
-) (./sections/03_methodology.tex
+[2]) (./sections/03_methodology.tex
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
 .
 
@@ -408,7 +388,7 @@ Underfull \hbox (badness 1371) in paragraph at lines 11--12
 meng-gu-nakan pus-taka
  []
 
-[2] (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
+(/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2023/02/27 1.9 listings language file
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <8> not available
@@ -431,13 +411,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 66--67
 []\OT1/ptm/b/n/10 Struktur Pe-san\OT1/ptm/m/n/10 : For-mat pe-san adalah
  []
 
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 79--80
 []\OT1/ptm/b/n/10 Verifikasi To-ken\OT1/ptm/m/n/10 : Men-sim-u-lasikan logika p
 ada
  []
 
-) (./sections/04_results.tex [3]
+) (./sections/04_results.tex
 Underfull \hbox (badness 3118) in paragraph at lines 12--13
 \OT1/ptm/m/n/10 AES-GCM ter-li-hat jauh lebih cepat (ham-pir 9x li-pat)
  []
@@ -465,14 +445,15 @@ File: ./assets/memory_comparison.png Graphic file (type png)
 Package pdftex.def Info: ./assets/memory_comparison.png  used on input line 29.
 
 (pdftex.def)             Requested size: 232.19843pt x 139.31702pt.
-<./assets/throughput_comparison.png, id=27, 722.7pt x 433.62pt>
+[4 <./assets/payload_size_analysis.png> <./assets/memory_comparison.png>]
+<./assets/throughput_comparison.png, id=33, 722.7pt x 433.62pt>
 File: ./assets/throughput_comparison.png Graphic file (type png)
 <use ./assets/throughput_comparison.png>
 Package pdftex.def Info: ./assets/throughput_comparison.png  used on input line
  43.
 (pdftex.def)             Requested size: 232.19843pt x 139.31702pt.
-) (./sections/05_conclusion.tex [4 <./assets/payload_size_analysis.png> <./asse
-ts/memory_comparison.png> <./assets/throughput_comparison.png>]
+)
+(./sections/05_conclusion.tex
 Underfull \hbox (badness 2529) in paragraph at lines 8--9
 []\OT1/ptm/b/n/10 AES-128-GCM menawarkan ke-cepatan ek-sekusi
  []
@@ -489,7 +470,7 @@ al-nya
  []
 
 ) (./main.bbl) (./sections/06_statement.tex
-<./assets/Screenshot 2024-04-16 135914.png, id=35, 134.75343pt x 84.315pt>
+<./assets/Screenshot 2024-04-16 135914.png, id=34, 134.75343pt x 84.315pt>
 File: ./assets/Screenshot 2024-04-16 135914.png Graphic file (type png)
 <use ./assets/Screenshot 2024-04-16 135914.png>
 Package pdftex.def Info: ./assets/Screenshot 2024-04-16 135914.png  used on inp
@@ -507,22 +488,25 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[5
-
- <./assets/Screenshot 2024-04-16 135914.png>] (./main.aux)
+[5 <./assets/throughput_comparison.png> <./assets/Screenshot 2024-04-16 135914.
+png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  5991 strings out of 475670
  90389 string characters out of 5784920
- 2137975 words of memory out of 5000000
+ 2069975 words of memory out of 5000000
  28068 multiletter control sequences out of 15000+600000
  599263 words of font info for 117 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
- 57i,8n,65p,531b,1416s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,8n,65p,1184b,1416s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texliv
@@ -535,7 +519,7 @@ b></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-d
 ist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1
 /urw/times/utmri8a.pfb>
-Output written on main.pdf (5 pages, 759379 bytes).
+Output written on main.pdf (5 pages, 762220 bytes).
 PDF statistics:
  95 PDF objects out of 1000 (max. 8388607)
  53 compressed objects within 1 object stream
