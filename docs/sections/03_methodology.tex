@@ -6,7 +6,7 @@ Sistem kunci sepeda pintar disimulasikan menggunakan bahasa pemrograman Python 3
 \subsection{Arsitektur Perangkat Lunak}
 Kode program diorganisir ke dalam modul-modul berikut:
 \begin{itemize}
-    \item \texttt{src/bicycle\_lock\_terminal.py}\footnote{Kode sumber lengkap (simulasi dan kriptografi) tersedia di: https://github.com/SandWithCheese/makalah-kripto\label{fn:repo}}: Antarmuka terminal utama yang menangani registrasi sepeda dan simulasi proses \texttt{lock/unlock}.
+    \item \texttt{src/bicycle\_lock\_terminal.py}\footnote{Kode sumber lengkap (simulasi dan kriptografi) tersedia di: \url{https://github.com/SandWithCheese/makalah-kripto}\label{fn:repo}}: Antarmuka terminal utama yang menangani registrasi sepeda dan simulasi proses \texttt{lock/unlock}.
     \item \texttt{src/crypto\_engine/ascon\_wrapper.py}\textsuperscript{\ref{fn:repo}}: Implementasi kelas \texttt{AsconLock} yang membungkus pustaka \texttt{ascon} native Python.
     \item \texttt{src/crypto\_engine/aes\_wrapper.py}\textsuperscript{\ref{fn:repo}}: Implementasi kelas \texttt{AESLock} menggunakan pustaka \texttt{pycryptodome} dengan mode GCM.
 \end{itemize}

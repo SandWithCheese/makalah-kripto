@@ -2,16 +2,20 @@
 \label{sec:conclusion}
 
 \subsection{Kesimpulan}
-Berdasarkan implementasi dan pengujian yang dilakukan, dapat disimpulkan bahwa:
+Berdasarkan implementasi, pengujian, dan analisis mendalam yang telah dilakukan terhadap algoritma ASCON-128 dan AES-128-GCM dalam konteks sistem kunci sepeda IoT, dapat disimpulkan bahwa:
 \begin{enumerate}
-    \item \textbf{ASCON-128 lebih efisien dalam penggunaan memori}, mengonsumsi hanya sekitar 1.4 KB peak RAM dibandingkan AES-GCM yang membutuhkan 4.9 KB. Ini menjadikan ASCON pilihan ideal untuk mikrokontroler low-end (seperti AVR atau ARM Cortex-M0) yang memiliki keterbatasan SRAM.
-    \item \textbf{AES-128-GCM menawarkan kecepatan eksekusi yang lebih tinggi} pada perangkat yang mendukung instruksi AES-NI. Namun, pada perangkat IoT tanpa akselerasi tersebut, keunggulan ini mungkin tidak signifikan atau justru berbalik karena kompleksitas tabel AES.
-    \item Implementasi sistem kunci sepeda pintar berhasil mengamankan perintah \textit{unlock} menggunakan kedua algoritma dengan mekanisme \texttt{nonce} unik untuk mencegah \textit{replay attacks}.
+    \item \textbf{Efisiensi Memori}: ASCON-128 membuktikan keunggulannya sebagai algoritma \textit{lightweight} dengan konsumsi memori puncak yang konstan dan sangat rendah ($\approx$ 1.40 KB), atau sekitar 71\% lebih hemat dibandingkan AES-128-GCM (4.88 KB). Hal ini menjadikan ASCON solusi superior untuk mikrokontroler dengan SRAM di bawah 8 KB.
+    \item \textbf{Kinerja vs Ukuran Payload}: Meskipun AES-128-GCM mendominasi kecepatan eksekusi absolut berkat akselerasi perangkat keras, ASCON menunjukkan karakteristik penskalaan yang kompetitif pada payload kecil. Pada ukuran payload 8 byte, inefisiensi relatif ASCON berkurang secara signifikan, menjadikannya opsi yang layak untuk transmisi token autentikasi pendek.
+    \item \textbf{Keamanan dan Fungsionalitas}: Sistem kunci sepeda yang dikembangkan berhasil mengamankan perintah \textit{unlock} menggunakan mekanisme AEAD. Integritas data terjamin melalui verifikasi tag, dan serangan \textit{replay} efektif dicegah menggunakan \textit{unique nonce} untuk setiap transaksi.
+    \item \textbf{Kelayakan Implementasi}: Throughput ASCON ($> 2,800$ ops/sec pada Python) sudah melampaui kebutuhan operasional sistem kunci sepeda yang hanya beroperasi secara \textit{bursty} (sesekali), sehingga pengguna tidak akan merasakan latensi yang mengganggu.
 \end{enumerate}
 
-\subsection{Saran}
-Untuk pengembangan selanjutnya, disarankan untuk:
+\subsection{Saran dan Pekerjaan Masa Depan}
+Penelitian ini dapat dikembangkan lebih lanjut untuk mendapatkan wawasan yang lebih komprehensif mengenai implementasi kriptografi ringan pada IoT:
 \begin{itemize}
-    \item Melakukan pengukuran daya (\textit{power consumption benchmarking}) pada perangkat keras IoT fisik (misalnya ESP32).
-    \item Mengimplementasikan versi teroptimasi C dari ASCON untuk membandingkan kinerja secara lebih adil dengan AES OpenSSL/PyCryptodome.
+    \item \textbf{Implementasi Perangkat Keras Riil}: Benchmarking saat ini dilakukan melalui simulasi. Pengujian masa depan harus dilakukan langsung pada perangkat target seperti ESP32, Arduino Nano 33 IoT, atau nRF52 untuk mengukur siklus CPU nyata dan konsumsi daya (\textit{power consumption}) dalam satuan mili-Joule.
+    \item \textbf{Investigasi Rentang Payload Ekstrim}: Perlu dilakukan analisis pada rentang payload yang lebih ekstrem (misal: 1 KB hingga 1 MB) untuk menentukan titik potong (\textit{crossover point}) efisiensi, serta pada ukuran sangat kecil ($< 8$ byte) yang mensimulasikan protokol komunikasi ultra-efisien.
+    \item \textbf{Komparasi dengan Algoritma LWC Lain}: Selain ASCON, kinerja sebaiknya dibandingkan dengan kandidat finalis NIST LWC lainnya seperti Grain-128AEAD atau TinyJAMBU, serta algoritma standar software-oriented seperti ChaCha20-Poly1305.
+    \item \textbf{Analisis Integrasi BLE}: Mengukur latensi \textit{end-to-end} dari aplikasi smartphone hingga aktuator kunci terbuka melalui protokol Bluetooth Low Energy (BLE), untuk melihat kontribusi overhead kriptografi terhadap total latensi sistem.
 \end{itemize}
+
