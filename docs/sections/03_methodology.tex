@@ -6,19 +6,99 @@ Sistem kunci sepeda pintar disimulasikan menggunakan bahasa pemrograman Python 3
 \subsection{Arsitektur Perangkat Lunak}
 Kode program diorganisir ke dalam modul-modul berikut:
 \begin{itemize}
-    \item \texttt{src/bicycle\_lock\_terminal.py}: Antarmuka terminal utama yang menangani registrasi sepeda dan simulasi proses \texttt{lock/unlock}.
-    \item \texttt{src/crypto\_engine/ascon\_wrapper.py}: Implementasi kelas \texttt{AsconLock} yang membungkus pustaka \texttt{ascon} native Python.
-    \item \texttt{src/crypto\_engine/aes\_wrapper.py}: Implementasi kelas \texttt{AESLock} menggunakan pustaka \texttt{pycryptodome} dengan mode GCM.
+    \item \texttt{src/bicycle\_lock\_terminal.py}\footnote{Kode sumber lengkap (simulasi dan kriptografi) tersedia di: https://github.com/SandWithCheese/makalah-kripto\label{fn:repo}}: Antarmuka terminal utama yang menangani registrasi sepeda dan simulasi proses \texttt{lock/unlock}.
+    \item \texttt{src/crypto\_engine/ascon\_wrapper.py}\textsuperscript{\ref{fn:repo}}: Implementasi kelas \texttt{AsconLock} yang membungkus pustaka \texttt{ascon} native Python.
+    \item \texttt{src/crypto\_engine/aes\_wrapper.py}\textsuperscript{\ref{fn:repo}}: Implementasi kelas \texttt{AESLock} menggunakan pustaka \texttt{pycryptodome} dengan mode GCM.
 \end{itemize}
+
+\subsection{Implementasi Kriptografi}
+Bagian ini mendetailkan implementasi wrapper untuk kedua algoritma yang digunakan dalam simulasi.
+
+\subsubsection{Implementasi ASCON-128}
+ASCON-128 diimplementasikan menggunakan pustaka \texttt{ascon} native Python (Gambar \ref{fig:ascon_code}). Wrapper ini menangani pembuatan \textit{nonce} unik (128-bit) untuk setiap operasi enkripsi guna mencegah \textit{replay attack}. \textit{Associated Data} (AD) disertakan untuk menjamin integritas konteks perintah.
+
+\begin{figure}[htbp]
+\begin{lstlisting}[language=Python]
+class AsconLock(BaseCipher):
+    def encrypt_command(self, plaintext, associated_data):
+        # Generate unique 128-bit nonce
+        nonce = os.urandom(16)
+        
+        # ASCON-128 encryption
+        ciphertext = ascon_encrypt(
+            key=self.key,
+            nonce=nonce,
+            associateddata=associated_data,
+            plaintext=plaintext,
+            variant="Ascon-128"
+        )
+        return nonce, ciphertext
+\end{lstlisting}
+\caption{Potongan kode implementasi enkripsi ASCON-128.}
+\label{fig:ascon_code}
+\end{figure}
+
+\subsubsection{Implementasi AES-128-GCM}
+Sebagai pembanding standar industri, AES-128-GCM diimplementasikan menggunakan pustaka \texttt{pycryptodome}. Berbeda dengan ASCON, AES-GCM menggunakan \textit{nonce} standar 96-bit yang diperlihatkan pada Gambar \ref{fig:aes_code}.
+
+\begin{figure}[htbp]
+\begin{lstlisting}[language=Python]
+class AESLock(BaseCipher):
+    def encrypt_command(self, plaintext, associated_data):
+        # Generate unique 96-bit nonce (Standard GCM)
+        nonce = os.urandom(12)
+        
+        cipher = AES.new(self.key, AES.MODE_GCM, nonce=nonce)
+        cipher.update(associated_data)
+        
+        # Encrypt and generate tag
+        ciphertext, tag = cipher.encrypt_and_digest(plaintext)
+        return nonce, ciphertext + tag
+\end{lstlisting}
+\caption{Potongan kode implementasi enkripsi AES-128-GCM.}
+\label{fig:aes_code}
+\end{figure}
 
 \subsection{Protokol Komunikasi Aman}
 Untuk memastikan keamanan perintah "Unlock", setiap pesan dienkripsi menggunakan skema AEAD.
 \begin{enumerate}
     \item \textbf{Pembangkitan Kunci}: Saat registrasi, kunci acak 128-bit dibangkitkan menggunakan \texttt{os.urandom(16)}.
-    \item \textbf{Struktur Pesan}: Format pesan adalah \texttt{UNLOCK:\textless bike\_id\textgreater:\textless timestamp\textgreater}. Timestamp digunakan untuk mencegah \textit{replay attacks} tingkat aplikasi, meskipun nonce unik sudah menjamin pada tingkat kriptografi.
-    \item \textbf{Nonce Unik}: Untuk setiap operasi enkripsi, \textit{nonce} (Number used ONCE) 128-bit baru dibangkitkan.
-    \item \textbf{Associated Data}: ID sepeda dan ID pabrikan disertakan sebagai \textit{Associated Data} (AD) yang tidak dienkripsi namun diautentikasi integritasnya.
+    \item \textbf{Struktur Pesan}: Format pesan adalah \texttt{UNLOCK:\textless bike\_id\textgreater:\textless timestamp\textgreater}.
+    \item \textbf{Nonce Unik}: Untuk setiap operasi enkripsi, \textit{nonce} baru dibangkitkan.
+    \item \textbf{Associated Data}: ID sepeda disertakan sebagai AD yang tidak dienkripsi namun diautentikasi.
 \end{enumerate}
+
+\subsection{Simulasi Berbasis Terminal}
+Untuk memvalidasi fungsionalitas sistem secara menyeluruh, dikembangkan aplikasi simulasi berbasis terminal (\textit{Command Line Interface}). Simulasi ini memodelkan interaksi nyata antara pengguna dan sistem kunci pintar.
+
+\subsubsection{Alur Kerja Simulasi}
+Aplikasi terminal menyediakan antarmuka interaktif yang mencakup fitur-fitur berikut:
+\begin{itemize}
+    \item \textbf{Registrasi Perangkat}: Pengguna dapat mendaftarkan sepeda dengan ID unik. Sistem akan membangkitkan dan menyimpan kunci enkripsi khusus untuk ID tersebut.
+    \item \textbf{Simulasi Unlock}: Fitur ini mensimulasikan pembangkitan token akses oleh aplikasi mobile. Token berisi perintah waktu-nyata (real-time) yang diamankan dengan algoritma terpilih (ASCON atau AES).
+    \item \textbf{Verifikasi Token}: Mensimulasikan logika pada mikrokontroler kunci (Lock MCU). Sistem memvalidasi token, mendekripsi pesan, dan memeriksa kesesuaian waktu serta integritas data.
+    \item \textbf{Uji Manipulasi Data}: Simulasi secara otomatis menyertakan demonstrasi keamanan dengan memodifikasi token yang valid (tampering). Sistem harus mampu mendeteksi perubahan ini dan menolak akses, mendemonstrasikan fitur integritas AEAD.
+\end{itemize}
+Implementasi logika pembuatan token dapat dilihat pada Gambar \ref{fig:token_logic}.
+
+\begin{figure}[htbp]
+\begin{lstlisting}[language=Python]
+def generate_unlock_token(self, bike_id):
+    # Create secure command structure
+    timestamp = datetime.now().isoformat()
+    command = f"UNLOCK:{bike_id}:{timestamp}"
+    
+    # Authenticated encryption
+    associated_data = self.lock_manufacturer_id + bike_id.encode()
+    nonce, ciphertext = self.cipher.encrypt_command(
+        command.encode(), 
+        associated_data
+    )
+    return { "nonce": nonce, "ciphertext": ciphertext }
+\end{lstlisting}
+\caption{Implementasi fungsi kunci logika bisnis untuk pembuatan token akses.}
+\label{fig:token_logic}
+\end{figure}
 
 \subsection{Lingkungan Pengujian}
 Pengujian kinerja dilakukan pada perangkat dengan spesifikasi:

@@ -9,6 +9,15 @@
 \usepackage{graphicx}
 \usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{listings}
+
+\lstset{
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    frame=single,
+    captionpos=b,
+    tabsize=2
+}
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 
@@ -18,20 +27,20 @@
 % Localization
 \renewcommand\IEEEkeywordsname{Kata Kunci}
 \renewcommand\abstractname{Abstrak}
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
 \def\refname{Daftar Pustaka}
 
 \begin{document}
 
-\title{Analisis Kinerja Implementasi ASCON-128 vs AES-128-GCM pada Sistem Kunci Sepeda IoT*\\
-{\footnotesize \textsuperscript{*}Catatan: Implementasi dilakukan menggunakan Python untuk simulasi perangkat IoT}
-\thanks{Penelitian ini dilakukan untuk memenuhi tugas mata kuliah Kriptografi.}
-}
+\title{Analisis Kinerja Implementasi ASCON-128 vs AES-128-GCM pada Sistem Kunci Sepeda IoT}
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Ahmad Naufal Ramadan}
-\IEEEauthorblockA{\textit{Sekolah Teknik Elektro dan Informatika} \\
+\author{\IEEEauthorblockN{Ahmad Naufal Ramadan - 13522005}
+\IEEEauthorblockA{\textit{Program Studi Teknik Informatika} \\
+\textit{Sekolah Teknik Elektro dan Informatika} \\
 \textit{Institut Teknologi Bandung}\\
-Bandung, Indonesia \\
-13522005@std.stei.itb.ac.id}
+Jl. Ganesha 10 Bandung 40132, Indonesia \\
+13522005@std.stei.itb.ac.id, naufalahmad022@gmail.com}
 }
 
 \maketitle
@@ -54,5 +63,7 @@ Kriptografi Ringan, ASCON, AES-GCM, Keamanan IoT, Benchmarking
 % Bibliography parameters match the usage of IEEEtran.bst (from IEEEtranBST2.zip)
 \bibliographystyle{styles/IEEEtran}
 \bibliography{bib/references}
+\input{sections/06_statement}
+
 
 \end{document}

@@ -4,7 +4,7 @@
 Bagian ini memaparkan hasil benchmarking kinerja antara ASCON-128 dan AES-128-GCM. Metrik yang dievaluasi adalah latensi waktu komputasi, penggunaan memori, dan throughput.
 
 \subsection{Analisis Latensi (Waktu Eksekusi)}
-Berdasarkan data pengujian dengan payload 64 byte (ukuran tipikal perintah unlock):
+Berdasarkan data pengujian dengan payload 64 byte (ukuran tipikal perintah unlock) yang diilustrasikan pada Gambar \ref{fig:latency}:
 \begin{itemize}
     \item \textbf{ASCON-128}: Rata-rata waktu enkripsi adalah 350.75 $\mu$s dan dekripsi 348.13 $\mu$s.
     \item \textbf{AES-128-GCM}: Rata-rata waktu enkripsi adalah 38.47 $\mu$s dan dekripsi 49.67 $\mu$s.
@@ -23,7 +23,7 @@ Pengukuran memori puncak (\textit{peak memory usage}) menunjukkan keunggulan sig
     \item \textbf{ASCON-128}: Rata-rata penggunaan memori puncak hanya \textbf{1.40 KB}.
     \item \textbf{AES-128-GCM}: Rata-rata penggunaan memori puncak mencapai \textbf{4.88 KB}.
 \end{itemize}
-Hasil ini konsisten dengan desain ASCON yang memang ditujukan untuk perangkat terkekang (\textit{constrained devices}) dengan RAM sangat terbatas. AES-GCM membutuhkan tabel \textit{lookup} yang lebih besar dan state management yang lebih kompleks.
+Hasil ini konsisten dengan desain ASCON yang memang ditujukan untuk perangkat terkekang (\textit{constrained devices}) dengan RAM sangat terbatas, seperti yang ditunjukkan pada Gambar \ref{fig:memory}. AES-GCM membutuhkan tabel \textit{lookup} yang lebih besar dan state management yang lebih kompleks.
 
 \begin{figure}[htbp]
 \centerline{\includegraphics[width=0.45\textwidth]{memory_comparison.png}}
@@ -32,7 +32,7 @@ Hasil ini konsisten dengan desain ASCON yang memang ditujukan untuk perangkat te
 \end{figure}
 
 \subsection{Throughput}
-Throughput enkripsi pada payload 64 byte:
+Throughput enkripsi pada payload 64 byte (Gambar \ref{fig:throughput}):
 \begin{itemize}
     \item ASCON-128: $\approx$ 2,851 operasi/detik.
     \item AES-128-GCM: $\approx$ 25,989 operasi/detik.
