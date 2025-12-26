@@ -1,17 +1,30 @@
-\section{Methodology}
+\section{Metodologi}
 \label{sec:methodology}
 
-\subsection{Experimental Setup}
-We utilized Python 3.10 implementations for both algorithms. 
+Sistem kunci sepeda pintar disimulasikan menggunakan bahasa pemrograman Python 3.10. Implementasi terdiri dari modul utama \texttt{BicycleLockSystem} dan wrapper kriptografi untuk ASCON dan AES.
+
+\subsection{Arsitektur Perangkat Lunak}
+Kode program diorganisir ke dalam modul-modul berikut:
 \begin{itemize}
-    \item \textbf{Hardware}: [Insert CPU Info]
-    \item \textbf{Libraries}: \texttt{pycryptodome} (AES) and \texttt{ascon} (native).
+    \item \texttt{src/bicycle\_lock\_terminal.py}: Antarmuka terminal utama yang menangani registrasi sepeda dan simulasi proses \texttt{lock/unlock}.
+    \item \texttt{src/crypto\_engine/ascon\_wrapper.py}: Implementasi kelas \texttt{AsconLock} yang membungkus pustaka \texttt{ascon} native Python.
+    \item \texttt{src/crypto\_engine/aes\_wrapper.py}: Implementasi kelas \texttt{AESLock} menggunakan pustaka \texttt{pycryptodome} dengan mode GCM.
 \end{itemize}
 
-\subsection{Metrics}
-We measured:
+\subsection{Protokol Komunikasi Aman}
+Untuk memastikan keamanan perintah "Unlock", setiap pesan dienkripsi menggunakan skema AEAD.
 \begin{enumerate}
-    \item \textbf{Encryption Latency}: Time taken for encryption operations.
-    \item \textbf{Memory Overhead}: Peak RAM usage during crypto operations.
-    \item \textbf{Throughput}: Bytes processed per second.
+    \item \textbf{Pembangkitan Kunci}: Saat registrasi, kunci acak 128-bit dibangkitkan menggunakan \texttt{os.urandom(16)}.
+    \item \textbf{Struktur Pesan}: Format pesan adalah \texttt{UNLOCK:\textless bike\_id\textgreater:\textless timestamp\textgreater}. Timestamp digunakan untuk mencegah \textit{replay attacks} tingkat aplikasi, meskipun nonce unik sudah menjamin pada tingkat kriptografi.
+    \item \textbf{Nonce Unik}: Untuk setiap operasi enkripsi, \textit{nonce} (Number used ONCE) 128-bit baru dibangkitkan.
+    \item \textbf{Associated Data}: ID sepeda dan ID pabrikan disertakan sebagai \textit{Associated Data} (AD) yang tidak dienkripsi namun diautentikasi integritasnya.
 \end{enumerate}
+
+\subsection{Lingkungan Pengujian}
+Pengujian kinerja dilakukan pada perangkat dengan spesifikasi:
+\begin{itemize}
+    \item CPU: 12th Gen Intel(R) Core(TM) i7-12700H
+    \item RAM: 16 GB
+    \item OS: Linux (WSL Ubuntu 24.04)
+\end{itemize}
+Metodologi benchmarking menggunakan modul \texttt{timeit} untuk pengukuran latensi enkripsi/dekripsi (rata-rata dari 1000 iterasi) dan modul \texttt{tracemalloc} untuk mengukur puncak penggunaan memori RAM.

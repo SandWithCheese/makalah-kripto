@@ -1,8 +1,11 @@
-\section{Background}
+\section{Landasan Teori}
 \label{sec:background}
 
-\subsection{AES-128-GCM}
-Advanced Encryption Standard (AES) in Galois/Counter Mode (GCM) is the current industry standard for high-performance Authenticated Encryption with Associated Data (AEAD)...
+\subsection{Kriptografi Ringan (Lightweight Cryptography)}
+Kriptografi ringan adalah cabang kriptografi yang berfokus pada perancangan algoritma yang disesuaikan untuk lingkungan terbatas (\textit{constrained environments}), seperti sensor network, RFID tags, dan mikrokontroler embedded. Tujuannya bukan untuk memberikan keamanan yang lebih rendah dari standar konvensional, melainkan memberikan keamanan setara dengan jejak implementasi (\textit{implementation footprint}) yang lebih kecil.
 
 \subsection{ASCON-128}
-ASCON was selected by NIST as the standard for lightweight cryptography in 2023. It is a sponge-based cipher designed for...
+ASCON adalah keluarga algoritma \textit{Authenticated Encryption with Associated Data} (AEAD) berbasis permutasi (\textit{permutation-based}) \cite{dobraunig2021ascon}. ASCON-128 menggunakan kunci 128-bit, nonce 128-bit, dan tag 128-bit. Struktur internalnya menggunakan skema Sponge dengan permutasi 320-bit. Keunggulan utama ASCON adalah efisiensi pada perangkat lunak tanpa dukungan instruksi khusus dan ketahanan terhadap \textit{side-channel attacks}.
+
+\subsection{AES-128-GCM}
+AES (Advanced Encryption Standard) dalam mode GCM (Galois/Counter Mode) adalah standar industri untuk \textit{high-speed authenticated encryption}. AES bekerja berdasarkan operasi blok cipher 128-bit. Meskipun sangat efisien pada prosesor desktop dan server modern berkat instruksi AES-NI, implementasinya pada perangkat mikrokontroler 8-bit atau 16-bit seringkali membutuhkan kode yang besar (\texttt{code size}) dan memori tabel pencarian (\texttt{S-box}) yang signifikan.

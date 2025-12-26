@@ -1,15 +1,49 @@
-\section{Results and Analysis}
+\section{Hasil dan Pembahasan}
 \label{sec:results}
 
-\subsection{Latency Analysis}
-Figure \ref{fig:latency} shows the encryption time for varying payload sizes...
+Bagian ini memaparkan hasil benchmarking kinerja antara ASCON-128 dan AES-128-GCM. Metrik yang dievaluasi adalah latensi waktu komputasi, penggunaan memori, dan throughput.
 
-\subsection{Memory Usage}
-ASCON demonstrated lower peak memory usage compared to AES-GCM...
+\subsection{Analisis Latensi (Waktu Eksekusi)}
+Berdasarkan data pengujian dengan payload 64 byte (ukuran tipikal perintah unlock):
+\begin{itemize}
+    \item \textbf{ASCON-128}: Rata-rata waktu enkripsi adalah 350.75 $\mu$s dan dekripsi 348.13 $\mu$s.
+    \item \textbf{AES-128-GCM}: Rata-rata waktu enkripsi adalah 38.47 $\mu$s dan dekripsi 49.67 $\mu$s.
+\end{itemize}
+AES-GCM terlihat jauh lebih cepat (hampir 9x lipat) dalam simulasi ini. Hal ini disebabkan oleh pustaka \texttt{pycryptodome} yang mengutilisasi instruksi AES-NI pada prosesor Intel/AMD modern dan implementasi \textit{backend} C yang teroptimasi. Di sisi lain, implementasi ASCON berjalan murni pada Python (\textit{pure-python reference}), yang mensimulasikan kinerja pada perangkat tanpa akselerasi perangkat keras.
 
-% Example Figure Placeholder
-% \begin{figure}[htbp]
-% \centerline{\includegraphics[width=0.45\textwidth]{latency_comparison.png}}
-% \caption{Latency Comparison (Log Scale)}
-% \label{fig:latency}
-% \end{figure}
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.45\textwidth]{payload_size_analysis.png}}
+\caption{Analisis Waktu Enkripsi Berdasarkan Ukuran Payload}
+\label{fig:latency}
+\end{figure}
+
+\subsection{Analisis Penggunaan Memori}
+Pengukuran memori puncak (\textit{peak memory usage}) menunjukkan keunggulan signifikan ASCON:
+\begin{itemize}
+    \item \textbf{ASCON-128}: Rata-rata penggunaan memori puncak hanya \textbf{1.40 KB}.
+    \item \textbf{AES-128-GCM}: Rata-rata penggunaan memori puncak mencapai \textbf{4.88 KB}.
+\end{itemize}
+Hasil ini konsisten dengan desain ASCON yang memang ditujukan untuk perangkat terkekang (\textit{constrained devices}) dengan RAM sangat terbatas. AES-GCM membutuhkan tabel \textit{lookup} yang lebih besar dan state management yang lebih kompleks.
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.45\textwidth]{memory_comparison.png}}
+\caption{Perbandingan Penggunaan Memori Puncak}
+\label{fig:memory}
+\end{figure}
+
+\subsection{Throughput}
+Throughput enkripsi pada payload 64 byte:
+\begin{itemize}
+    \item ASCON-128: $\approx$ 2,851 operasi/detik.
+    \item AES-128-GCM: $\approx$ 25,989 operasi/detik.
+\end{itemize}
+Meskipun throughput AES lebih tinggi di PC, ASCON memberikan kinerja yang memadai ($>$ 2000 ops/sec) yang sudah sangat cukup untuk aplikasi kunci sepeda yang hanya beroperasi sesekali (tidak \textit{real-time streaming}).
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.45\textwidth]{throughput_comparison.png}}
+\caption{Perbandingan Throughput Operasi Enkripsi}
+\label{fig:throughput}
+\end{figure}
+
+\subsection{Analisis Keamanan}
+Kedua algoritma berhasil memverifikasi integritas data. Percobaan modifikasi ciphertext menghasilkan kegagalan autentikasi (tag mismatch), memastikan sistem aman dari serangan manipulasi pesan.

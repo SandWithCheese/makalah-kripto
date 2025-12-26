@@ -15,40 +15,33 @@
 % Path to graphics (Custom addition to keep folder structure clean)
 \graphicspath{ {./assets/} }
 
+% Localization
+\renewcommand\IEEEkeywordsname{Kata Kunci}
+\renewcommand\abstractname{Abstrak}
+\def\refname{Daftar Pustaka}
+
 \begin{document}
 
-\title{Benchmarking Lightweight Cryptography: ASCON-128 vs. AES-128-GCM for IoT Environments*\\
-{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured for https://ieeexplore.ieee.org and should not be used}
-\thanks{Identify applicable funding agency here. If none, delete this.}
+\title{Analisis Kinerja Implementasi ASCON-128 vs AES-128-GCM pada Sistem Kunci Sepeda IoT*\\
+{\footnotesize \textsuperscript{*}Catatan: Implementasi dilakukan menggunakan Python untuk simulasi perangkat IoT}
+\thanks{Penelitian ini dilakukan untuk memenuhi tugas mata kuliah Kriptografi.}
 }
 
-\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
-\and
-\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-\textit{name of organization (of Aff.)}\\
-City, Country \\
-email address or ORCID}
+\author{\IEEEauthorblockN{1\textsuperscript{st} Ahmad Naufal Ramadan}
+\IEEEauthorblockA{\textit{Sekolah Teknik Elektro dan Informatika} \\
+\textit{Institut Teknologi Bandung}\\
+Bandung, Indonesia \\
+13522005@std.stei.itb.ac.id}
 }
 
 \maketitle
 
 \begin{abstract}
-This paper presents a comparative analysis of ASCON-128 (NIST LWC Standard) and AES-128-GCM on resource-constrained environments. We focus on CPU latency, memory usage, and code overhead.
+Makalah ini menyajikan analisis komparatif antara ASCON-128 (Standar NIST LWC) dan AES-128-GCM pada simulasi lingkungan terbatas. Kami berfokus pada latensi CPU, penggunaan memori, dan overhead kode untuk aplikasi kunci sepeda pintar. Hasil pengujian menunjukkan bahwa ASCON-128 memiliki keunggulan dalam penggunaan memori yang lebih rendah, menjadikannya kandidat kuat untuk perangkat IoT dengan sumber daya sangat terbatas, meskipun AES-128-GCM unggul dalam throughput pada perangkat dengan akselerasi perangkat keras.
 \end{abstract}
 
 \begin{IEEEkeywords}
-Lightweight Cryptography, ASCON, AES-GCM, IoT Security, Benchmarking
+Kriptografi Ringan, ASCON, AES-GCM, Keamanan IoT, Benchmarking
 \end{IEEEkeywords}
 
 % Modular Sections

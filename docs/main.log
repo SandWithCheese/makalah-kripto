@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.21)  20 DEC 2025 22:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.10.21)  26 DEC 2025 11:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -253,20 +253,20 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
-LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 
 -- Lines per column: 56 (exact).
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -291,43 +291,160 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 37.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 37.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 44.
-
-Underfull \hbox (badness 2310) in paragraph at lines 50--52
-[]\OT1/ptm/b/it/9 Index Terms\OT1/ptm/b/n/9 ---Lightweight Cryp-tog-ra-phy, AS-
-CON, AES-
- []
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 37.
 
 (./sections/01_introduction.tex
-LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
-4.
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+[]\OT1/ptm/m/n/10 Internet of Things (IoT) telah berkem-bang pe-sat,
+ []
 
+
+Underfull \hbox (badness 2173) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 menghubungkan mil-iaran perangkat ke in-ter-net. Na-mun,
+ []
+
+
+Underfull \hbox (badness 3590) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 perangkat-perangkat ini ser-ingkali memi-liki keter-batasan
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 sum-ber daya kom-putasi, mem-ori, dan daya bat-erai.
+ []
+
+
+Underfull \hbox (badness 4967) in paragraph at lines 4--5
+\OT1/ptm/m/n/10 Krip-tografi stan-dar seperti AES (Ad-vanced En-cryp-tion
+ []
+
+) (./sections/02_background.tex
+Underfull \hbox (badness 2617) in paragraph at lines 8--9
+[]\OT1/ptm/m/n/10 ASCON adalah kelu-arga al-go-ritma \OT1/ptm/m/it/10 Au-then-t
+i-cated En-
+ []
+
+LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 1
+1.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ))
-(./sections/02_background.tex) (./sections/03_methodology.tex
-Underfull \hbox (badness 2302) in paragraph at lines 8--1
-[]\OT1/ptm/m/n/10 ASCON was se-lected by NIST as the stan-dard for
+(./sections/03_methodology.tex
+Underfull \hbox (badness 10000) in paragraph at lines 9--10
+[]\OT1/pcr/m/n/10 src/bicycle_lock_terminal.py\OT1/ptm/m/n/10 : An-tar-muka
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10--11
+[]\OT1/pcr/m/n/10 src/crypto_engine/ascon_wrapper.py\OT1/ptm/m/n/10 :
+ []
+
+
+Underfull \hbox (badness 1852) in paragraph at lines 10--11
+\OT1/ptm/m/n/10 Im-ple-men-tasi ke-las \OT1/pcr/m/n/10 AsconLock \OT1/ptm/m/n/1
+0 yang mem-bungkus
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11--12
+[]\OT1/pcr/m/n/10 src/crypto_engine/aes_wrapper.py\OT1/ptm/m/n/10 :
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 11--12
+\OT1/ptm/m/n/10 Im-ple-men-tasi ke-las \OT1/pcr/m/n/10 AESLock \OT1/ptm/m/n/10 
+meng-gu-nakan pus-taka
+ []
+
+[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
+dist/fonts/enc/dvips/base/8r.enc}
+
+
+]
+LaTeX Font Info:    Trying to load font information for OML+pcr on input line 1
+8.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omlpcr.fd
+File: omlpcr.fd 
+)
+LaTeX Font Info:    Font shape `OML/pcr/m/n' in size <10> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 18.
+
+Underfull \hbox (badness 10000) in paragraph at lines 18--19
+[]\OT1/ptm/b/n/10 Struktur Pe-san\OT1/ptm/m/n/10 : For-mat pe-san adalah
+ []
+
+
+Underfull \hbox (badness 3396) in paragraph at lines 18--19
+\OT1/ptm/m/n/10 di-gu-nakan un-tuk mence-gah \OT1/ptm/m/it/10 re-play at-tacks 
+\OT1/ptm/m/n/10 tingkat
  []
 
 ) (./sections/04_results.tex
+Underfull \hbox (badness 3118) in paragraph at lines 12--13
+\OT1/ptm/m/n/10 AES-GCM ter-li-hat jauh lebih cepat (ham-pir 9x li-pat)
+ []
 
-LaTeX Warning: Reference `fig:latency' on page 1 undefined on input line 5.
 
-) (./sections/05_conclusion.tex) (./main.bbl
-Overfull \hbox (8.66933pt too wide) in paragraph at lines 24--25
+Underfull \hbox (badness 5077) in paragraph at lines 12--13
+\OT1/ptm/m/n/10 dalam sim-u-lasi ini. Hal ini dise-babkan oleh pus-taka
+ []
+
+<./assets/payload_size_analysis.png, id=12, 1011.78pt x 722.7pt>
+File: ./assets/payload_size_analysis.png Graphic file (type png)
+<use ./assets/payload_size_analysis.png>
+Package pdftex.def Info: ./assets/payload_size_analysis.png  used on input line
+ 15.
+(pdftex.def)             Requested size: 232.19843pt x 165.85359pt.
+
+Underfull \hbox (badness 2205) in paragraph at lines 23--24
+[]\OT1/ptm/b/n/10 ASCON-128\OT1/ptm/m/n/10 : Rata-rata peng-gu-naan mem-ori pun
+-cak
+ []
+
+<./assets/memory_comparison.png, id=14, 722.7pt x 433.62pt>
+File: ./assets/memory_comparison.png Graphic file (type png)
+<use ./assets/memory_comparison.png>
+Package pdftex.def Info: ./assets/memory_comparison.png  used on input line 29.
+
+(pdftex.def)             Requested size: 232.19843pt x 139.31702pt.
+<./assets/throughput_comparison.png, id=15, 722.7pt x 433.62pt>
+File: ./assets/throughput_comparison.png Graphic file (type png)
+<use ./assets/throughput_comparison.png>
+Package pdftex.def Info: ./assets/throughput_comparison.png  used on input line
+ 43.
+(pdftex.def)             Requested size: 232.19843pt x 139.31702pt.
+) (./sections/05_conclusion.tex [2 <./assets/payload_size_analysis.png> <./asse
+ts/memory_comparison.png>]
+Underfull \hbox (badness 2529) in paragraph at lines 8--9
+[]\OT1/ptm/b/n/10 AES-128-GCM menawarkan ke-cepatan ek-sekusi
+ []
+
+
+Underfull \hbox (badness 4036) in paragraph at lines 9--10
+[]\OT1/ptm/m/n/10 Implementasi sis-tem kunci sepeda pin-tar berhasil
+ []
+
+
+Underfull \hbox (badness 1888) in paragraph at lines 15--16
+\OT1/ptm/m/it/10 mark-ing\OT1/ptm/m/n/10 ) pada perangkat keras IoT fisik (mis-
+al-nya
+ []
+
+) (./main.bbl
+Overfull \hbox (8.66933pt too wide) in paragraph at lines 25--28
 []\OT1/ptm/m/n/8 NIST, ``Lightweight cryp-tog-ra-phy,'' https://csrc.nist.gov/P
 rojects/lightweight-
  []
@@ -344,38 +461,33 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}{/usr/share/texlive/texmf-
-dist/fonts/enc/dvips/base/8r.enc}
+[3
 
-
-] (./main.aux)
+ <./assets/throughput_comparison.png>] (./main.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
  ) 
 Here is how much of TeX's memory you used:
- 4107 strings out of 475670
- 64451 string characters out of 5784920
+ 4162 strings out of 475670
+ 65937 string characters out of 5784920
  1936975 words of memory out of 5000000
- 26208 multiletter control sequences out of 15000+600000
- 599862 words of font info for 123 fonts, out of 8000000 for 9000
+ 26259 multiletter control sequences out of 15000+600000
+ 600998 words of font info for 124 fonts, out of 8000000 for 9000
  264 hyphenation exceptions out of 8191
- 57i,11n,65p,234b,304s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/
-times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.p
-fb>
-Output written on main.pdf (1 page, 76627 bytes).
+ 57i,11n,65p,591b,304s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist
+/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/ur
+w/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (3 pages, 682134 bytes).
 PDF statistics:
- 39 PDF objects out of 1000 (max. 8388607)
- 23 compressed objects within 1 object stream
+ 62 PDF objects out of 1000 (max. 8388607)
+ 34 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

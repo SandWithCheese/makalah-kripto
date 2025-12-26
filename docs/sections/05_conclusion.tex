@@ -1,4 +1,17 @@
-\section{Conclusion}
+\section{Kesimpulan}
 \label{sec:conclusion}
 
-In conclusion, ASCON-128 proves to be a viable alternative to AES-GCM for constrained devices, offering significant memory savings...
+\subsection{Kesimpulan}
+Berdasarkan implementasi dan pengujian yang dilakukan, dapat disimpulkan bahwa:
+\begin{enumerate}
+    \item \textbf{ASCON-128 lebih efisien dalam penggunaan memori}, mengonsumsi hanya sekitar 1.4 KB peak RAM dibandingkan AES-GCM yang membutuhkan 4.9 KB. Ini menjadikan ASCON pilihan ideal untuk mikrokontroler low-end (seperti AVR atau ARM Cortex-M0) yang memiliki keterbatasan SRAM.
+    \item \textbf{AES-128-GCM menawarkan kecepatan eksekusi yang lebih tinggi} pada perangkat yang mendukung instruksi AES-NI. Namun, pada perangkat IoT tanpa akselerasi tersebut, keunggulan ini mungkin tidak signifikan atau justru berbalik karena kompleksitas tabel AES.
+    \item Implementasi sistem kunci sepeda pintar berhasil mengamankan perintah \textit{unlock} menggunakan kedua algoritma dengan mekanisme \texttt{nonce} unik untuk mencegah \textit{replay attacks}.
+\end{enumerate}
+
+\subsection{Saran}
+Untuk pengembangan selanjutnya, disarankan untuk:
+\begin{itemize}
+    \item Melakukan pengukuran daya (\textit{power consumption benchmarking}) pada perangkat keras IoT fisik (misalnya ESP32).
+    \item Mengimplementasikan versi teroptimasi C dari ASCON untuk membandingkan kinerja secara lebih adil dengan AES OpenSSL/PyCryptodome.
+\end{itemize}
