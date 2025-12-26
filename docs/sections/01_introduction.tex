@@ -3,6 +3,6 @@
 
 Internet of Things (IoT) telah berkembang pesat, menghubungkan miliaran perangkat ke internet. Namun, perangkat-perangkat ini seringkali memiliki keterbatasan sumber daya komputasi, memori, dan daya baterai. Kriptografi standar seperti AES (Advanced Encryption Standard) seringkali terlalu berat untuk diimplementasikan pada perangkat kelas bawah tanpa akselerasi perangkat keras khusus.
 
-Pada tahun 2023, NIST mengumumkan standar baru untuk Kriptografi Ringan (Lightweight Cryptography/LWC), yaitu keluarga algoritma ASCON \cite{NIST_LWC}. Standar ini dirancang khusus untuk memberikan keamanan yang kuat pada lingkungan terbatas.
+Pada tahun 2023, NIST mengumumkan standar baru untuk Kriptografi Ringan (Lightweight Cryptography/LWC), yaitu keluarga algoritma ASCON \cite{munir2025lwc}. Standar ini dirancang khusus untuk memberikan keamanan yang kuat pada lingkungan terbatas.
 
 Dalam makalah ini, kami mengimplementasikan dan membandingkan kinerja ASCON-128 dan AES-128-GCM dalam konteks sistem kunci sepeda pintar (Smart Bicycle Lock). Sistem ini memerlukan autentikasi yang cepat dan aman untuk membuka kunci, dengan overhead daya dan memori seminimal mungkin. Fokus utama penelitian ini adalah mengukur trade-off antara latensi eksekusi dan konsumsi memori dari kedua algoritma tersebut.

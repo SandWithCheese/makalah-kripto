@@ -7,7 +7,8 @@
 \providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
 \providecommand{\BIBentryALTinterwordstretchfactor}{4}
 \providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus \fontdimen4\font\relax}
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
 \providecommand{\BIBforeignlanguage}[2]{{%
 \expandafter\ifx\csname l@#1\endcsname\relax
 \typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
@@ -20,10 +21,30 @@
 \providecommand{\BIBdecl}{\relax}
 \BIBdecl
 
-\bibitem{NIST_LWC}
-NIST, ``Lightweight cryptography,'' \url{https://csrc.nist.gov/Projects/lightweight-cryptography}, 2023, accessed: 2025-12-20.
+\bibitem{munir2025lwc}
+R.~Munir, ``Kriptografi bobot ringan (lightweight cryptography),'' 2025, slide
+  Kuliah, Program Studi Teknik Informatika STEI ITB.
 
-\bibitem{dobraunig2021ascon}
-C.~Dobraunig, M.~Eichlseder, F.~Mendel, and M.~Schl{\"a}ffer, ``Ascon v1. 2: Lightweight authenticated encryption and hashing,'' \emph{Journal of Cryptology}, vol.~34, no.~3, p.~33, 2021.
+\bibitem{munir2025pengantar}
+------, ``Pengantar kriptografi,'' 2025, slide Kuliah, Program Studi Teknik
+  Informatika STEI ITB.
+
+\bibitem{rfc9771}
+A.~Bozhko, ``Properties of authenticated encryption with associated data (aead)
+  algorithms,'' Internet Research Task Force (IRTF), RFC 9771, May 2025.
+
+\bibitem{fips197}
+NIST, ``Advanced encryption standard (aes),'' National Institute of Standards
+  and Technology, Tech. Rep. 197, 2001.
+
+\bibitem{sp80038d}
+M.~Dworkin, ``Recommendation for block cipher modes of operation:
+  Galois/counter mode (gcm) and gmac,'' National Institute of Standards and
+  Technology, Tech. Rep. 800-38D, 2007.
+
+\bibitem{ascon_round2}
+C.~Dobraunig, M.~Eichlseder, F.~Mendel, and M.~Schläffer, ``Ascon v1.2:
+  Submission to the nist lightweight cryptography competition,'' 2019, round 2
+  Submission.
 
 \end{thebibliography}

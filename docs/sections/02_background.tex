@@ -1,11 +1,87 @@
 \section{Landasan Teori}
 \label{sec:background}
 
-\subsection{Kriptografi Ringan (Lightweight Cryptography)}
-Kriptografi ringan adalah cabang kriptografi yang berfokus pada perancangan algoritma yang disesuaikan untuk lingkungan terbatas (\textit{constrained environments}), seperti sensor network, RFID tags, dan mikrokontroler embedded. Tujuannya bukan untuk memberikan keamanan yang lebih rendah dari standar konvensional, melainkan memberikan keamanan setara dengan jejak implementasi (\textit{implementation footprint}) yang lebih kecil.
+\subsection{Kriptografi}
+Kriptografi adalah ilmu dan seni untuk menjaga keamanan pesan \cite{munir2025pengantar}. Dalam skenario komunikasi klasik yang sering digambarkan dengan pengirim (Alice) dan penerima (Bob), kriptografi bertujuan untuk melindungi informasi yang dikirimkan melalui saluran publik yang tidak aman dari pihak ketiga (Eve).
 
-\subsection{ASCON-128}
-ASCON adalah keluarga algoritma \textit{Authenticated Encryption with Associated Data} (AEAD) berbasis permutasi (\textit{permutation-based}) \cite{dobraunig2021ascon}. ASCON-128 menggunakan kunci 128-bit, nonce 128-bit, dan tag 128-bit. Struktur internalnya menggunakan skema Sponge dengan permutasi 320-bit. Keunggulan utama ASCON adalah efisiensi pada perangkat lunak tanpa dukungan instruksi khusus dan ketahanan terhadap \textit{side-channel attacks}.
+Secara umum, tujuan utama kriptografi meliputi:
+\begin{itemize}
+    \item \textbf{Kerahasiaan (\textit{Confidentiality})}: Menjamin bahwa informasi hanya dapat diakses oleh pihak yang berwenang.
+    \item \textbf{Integritas Data (\textit{Data Integrity})}: Menjamin bahwa data tidak diubah atau dimanipulasi selama transmisi.
+    \item \textbf{Autentikasi (\textit{Authentication})}: Memastikan identitas pengirim atau sumber data.
+    \item \textbf{Nir-sangkal (\textit{Non-repudiation})}: Mencegah pengirim menyangkal bahwa mereka telah mengirimkan pesan tersebut.
+\end{itemize}
+
+\subsection{Kriptografi Ringan (Lightweight Cryptography)}
+Kriptografi ringan (\textit{Lightweight Cryptography} atau LWC) adalah cabang riset kriptografi yang dirancang khusus untuk perangkat dengan sumber daya sangat terbatas (\textit{constrained devices}) \cite{munir2025lwc}. Berbeda dengan kriptografi konvensional yang dioptimalkan untuk kecepatan tinggi pada prosesor desktop atau server, LWC berfokus pada efisiensi implementasi.
+
+Perangkat target untuk LWC meliputi:
+\begin{itemize}
+    \item \textit{Internet of Things} (IoT) \textit{devices} seperti sensor dan node jaringan kecil.
+    \item \textit{Smart card} dan RFID \textit{tags}.
+    \item \textit{Medical implants} (implan medis).
+    \item Mikrokontroler \textit{embedded} 8-bit atau 16-bit.
+\end{itemize}
+
+Keterbatasan utama yang dihadapi perangkat-perangkat ini adalah memori yang kecil (RAM dan ROM terbatas), daya komputasi rendah, dan sumber daya energi yang terbatas (beroperasi dengan baterai kecil atau \textit{energy harvesting}). Oleh karena itu, algoritma standar seperti AES atau RSA seringkali dianggap terlalu "berat" atau boros energi untuk lingkungan ini.
+
+\subsection{Authenticated Encryption with Associated Data (AEAD)}
+\textit{Authenticated Encryption with Associated Data} (AEAD) adalah kelas algoritma kriptografi yang menyediakan kerahasiaan, integritas, dan autentikasi secara bersamaan \cite{rfc9771}. Pendekatan ini mengatasi kelemahan dari penggabungan manual antara enkripsi dan \textit{Message Authentication Code} (MAC) yang rentan terhadap kesalahan implementasi.
+
+Berdasarkan RFC 9771, algoritma AEAD menerima empat masukan:
+\begin{itemize}
+    \item \textbf{Secret Key ($K$)}: Kunci rahasia yang dibagikan antar pihak.
+    \item \textbf{Nonce ($N$)}: Nilai unik (\textit{Number used once}) untuk mencegah serangan ulang (\textit{replay attack}).
+    \item \textbf{Associated Data ($AD$)}: Data publik yang perlu diautentikasi integritasnya namun tidak dienkripsi, seperti \textit{header} paket jaringan.
+    \item \textbf{Plaintext ($P$)}: Data rahasia yang akan dienkripsi dan diautentikasi.
+\end{itemize}
+Keluaran dari operasi AEAD adalah \textit{Ciphertext} ($C$) dan \textit{Authentication Tag} ($T$). Proses dekripsi akan memverifikasi tag $T$ terlebih dahulu; jika verifikasi gagal, maka ciphertext tidak akan didekripsi dan dianggap tidak sah.
+
+\subsection{Advanced Encryption Standard (AES)}
+AES (\textit{Advanced Encryption Standard}) adalah standar enkripsi blok simetris yang ditetapkan oleh NIST dalam publikasi FIPS 197 \cite{fips197}. AES menggantikan DES sebagai standar global.
+
+AES beroperasi pada blok data berukuran tetap 128-bit. Panjang kunci yang didukung adalah 128, 192, dan 256 bit, yang menentukan jumlah putaran (\textit{rounds}) transformasi: 10 putaran untuk kunci 128-bit, 12 untuk 192-bit, dan 14 untuk 256-bit.
+Setiap putaran AES terdiri dari empat transformasi lapisan:
+\begin{enumerate}
+    \item \textbf{SubBytes}: Substitusi non-linear menggunakan S-Box untuk memberikan sifat \textit{confusion}.
+    \item \textbf{ShiftRows}: Permutasi baris untuk difusi.
+    \item \textbf{MixColumns}: Operasi pencampuran kolom linear untuk difusi lebih lanjut (tidak dilakukan pada putaran terakhir).
+    \item \textbf{AddRoundKey}: Operasi XOR antara state dengan \textit{round key}.
+\end{enumerate}
 
 \subsection{AES-128-GCM}
-AES (Advanced Encryption Standard) dalam mode GCM (Galois/Counter Mode) adalah standar industri untuk \textit{high-speed authenticated encryption}. AES bekerja berdasarkan operasi blok cipher 128-bit. Meskipun sangat efisien pada prosesor desktop dan server modern berkat instruksi AES-NI, implementasinya pada perangkat mikrokontroler 8-bit atau 16-bit seringkali membutuhkan kode yang besar (\texttt{code size}) dan memori tabel pencarian (\texttt{S-box}) yang signifikan.
+Galois/Counter Mode (GCM) adalah mode operasi untuk blok cipher yang direkomendasikan oleh NIST dalam SP 800-38D untuk menyediakan layanan \textit{authenticated encryption} \cite{sp80038d}.
+
+AES-GCM menggabungkan:
+\begin{itemize}
+    \item \textbf{Counter Mode (CTR)}: Untuk enkripsi, yang mengubah blok cipher menjadi stream cipher, memungkinkan paralelisasi penuh.
+    \item \textbf{GMAC}: Untuk autentikasi, yang menggunakan fungsi hash universal GHASH. GHASH beroperasi pada medan Galois $GF(2^{128})$.
+\end{itemize}
+Meskipun GCM sangat cepat pada prosesor yang memiliki instruksi \textit{carry-less multiplication} (PCLMULQDQ) dan AES-NI, operasi perkalian pada medan Galois $GF(2^{128})$ sangat membebani mikrokontroler sederhana yang tidak memiliki dukungan perangkat keras tersebut, mengakibatkan latensi tinggi dan kode program yang besar untuk tabel pre-komputasi.
+
+\subsection{Algoritma ASCON}
+ASCON adalah algoritma AEAD yang dirancang khusus untuk memenuhi kebutuhan kriptografi ringan dan telah ditetapkan sebagai pemenang kompetisi NIST Lightweight Cryptography. Spesifikasi ASCON v1.2 \cite{ascon_round2} mendefinisikan ASCON menggunakan konstruksi \textit{Sponge}.
+
+ASCON-128, varian utama yang direkomendasikan, memiliki karakteristik:
+\begin{itemize}
+    \item \textbf{State Size}: 320 bit, dibagi menjadi rate $r=64$ bit dan capacity $c=256$ bit.
+    \item \textbf{Key \& Tag Size}: 128 bit.
+    \item \textbf{Rounds}: $a=12$ putaran untuk inisialisasi/finalisasi, dan $b=6$ putaran untuk memproses data.
+\end{itemize}
+
+Operasi ASCON terdiri dari empat fase:
+\begin{enumerate}
+    \item \textbf{Initialization}: Memuat kunci dan nonce ke dalam state, diikuti permutasi $p^a$.
+    \item \textbf{Associated Data Processing}: Menyerap AD blok demi blok.
+    \item \textbf{Plaintext Processing}: Menyerap plaintext dan memeras ciphertext (mode \textit{duplex}).
+    \item \textbf{Finalization}: Menghasilkan tag autentikasi.
+\end{enumerate}
+Desain ASCON hanya menggunakan operasi bitwise sederhana (AND, NOT, XOR, ROT), membuatnya sangat efisien dan kecil secara ukuran kode pada mikrokontroler apa pun, sekaligus tahan terhadap serangan \textit{side-channel}.
+
+\subsection{Metrik Evaluasi Kinerja}
+Evaluasi kinerja pada perangkat terbatas difokuskan pada tiga metrik utama:
+\begin{itemize}
+    \item \textbf{Latensi CPU}: Waktu siklus atau durasi (dalam detik/mikrodetik) yang dibutuhkan untuk melakukan operasi enkripsi dan dekripsi lengkap.
+    \item \textbf{Penggunaan Memori (RAM)}: Jumlah memori tumpukan (\textit{stack}) maksimum yang digunakan fungsi kriptografi. Hal ini krusial karena mikrokontroler seringkali hanya memiliki RAM dalam orde kilobyte.
+    \item \textbf{Ukuran Kode (ROM/Flash)}: Besarnya ruang penyimpanan program yang dibutuhkan untuk menyimpan implementasi algoritma.
+\end{itemize}
