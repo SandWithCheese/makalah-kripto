@@ -107,4 +107,4 @@ Pengujian kinerja dilakukan pada perangkat dengan spesifikasi:
     \item RAM: 16 GB
     \item OS: Linux (WSL Ubuntu 24.04)
 \end{itemize}
-Metodologi benchmarking menggunakan modul \texttt{timeit} untuk pengukuran latensi enkripsi/dekripsi (rata-rata dari 1000 iterasi) dan modul \texttt{tracemalloc} untuk mengukur puncak penggunaan memori RAM.
+Metodologi benchmarking menggunakan modul \texttt{timeit} untuk pengukuran latensi enkripsi/dekripsi (rata-rata dari 1000 iterasi) dan modul \texttt{tracemalloc} untuk mengukur puncak penggunaan memori RAM\footnote{Catatan: Pengukuran memori ini merepresentasikan \textit{Memory Footprint} dalam lingkungan \textit{runtime} Python dan mungkin berbeda secara signifikan dengan ukuran kode/RAM pada implementasi C/C++ \textit{bare-metal}.}.
