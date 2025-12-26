@@ -23,6 +23,7 @@ makalah-kripto/
 │   │   ├── base_cipher.py        # AEAD abstract interface
 │   │   ├── ascon_wrapper.py      # ASCON-128 implementation
 │   │   └── aes_wrapper.py        # AES-128-GCM implementation
+│   ├── bicycle_lock_terminal.py  # Interactive terminal application ⭐
 │   └── visualize_results.py      # Graph generation
 ├── benchmarks/
 │   ├── timing_profiler.py        # High-resolution timing (perf_counter)
@@ -34,10 +35,16 @@ makalah-kripto/
 │   ├── multi_payload_results.csv # Multi-payload raw data
 │   └── graphs/                   # Visualization charts
 ├── docs/                          # Academic report materials
-│   ├── report_template.md        # IEEE-format structure guide
-│   └── multi_payload_analysis.md # Payload scaling analysis
+│   ├── main.tex                  # LaTeX report source
+│   ├── main.pdf                  # Compiled PDF report
+│   ├── sections/                 # Report sections
+│   ├── bib/                      # Bibliography files
+│   ├── assets/                   # Figures and images
+│   └── *.md                      # Analysis documentation
 ├── tests/                         # Unit tests
-├── run_all.py                     # One-command execution
+│   ├── test_ascon.py             # ASCON-128 tests
+│   └── test_aes.py               # AES-128-GCM tests
+├── run_all.py                     # One-command benchmark execution
 ├── requirements.txt               # Pinned dependencies
 └── README.md                      # This file
 ```
@@ -83,6 +90,31 @@ This will:
 4. 💾 Export results to CSV
 
 **Estimated runtime**: 5-10 minutes (depending on hardware)
+
+### 4. Run Terminal-Based Bicycle Lock Application
+
+```bash
+# Activate virtual environment
+source venv/bin/activate  # or venv/bin/activate.fish for fish shell
+
+# Run the interactive terminal application
+python3 src/bicycle_lock_terminal.py
+```
+
+**Features:**
+- Register bicycles with unique IDs (e.g., BIKE001)
+- Generate cryptographic unlock tokens
+- Verify token authenticity with AEAD
+- Switch between ASCON-128 and AES-128-GCM
+- Security demonstrations (tampered token detection)
+
+**Menu Options:**
+1. Register New Bicycle - Add bikes to the system
+2. Generate Unlock Token - Create encrypted unlock commands
+3. Verify Unlock Token - Test authentication
+4. Switch Algorithm - Toggle ASCON ↔ AES
+5. View System Status - See registered bikes
+6. Exit - Close the application
 
 ## 📊 Benchmark Methodology
 
